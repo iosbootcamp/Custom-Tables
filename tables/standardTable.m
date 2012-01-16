@@ -9,12 +9,10 @@
 #import "standardTable.h"
 
 @implementation standardTable
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+        self.tabBarItem=[[[UITabBarItem alloc] initWithTitle:@"Standard" image:nil tag:0]autorelease];
     }
     return self;
 }

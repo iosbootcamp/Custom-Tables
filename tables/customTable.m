@@ -10,11 +10,11 @@
 #import "customCell.h"
 @implementation customTable
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+        self.tabBarItem=[[[UITabBarItem alloc] initWithTitle:@"Custom" image:nil tag:0]autorelease];
+        self.tableView.rowHeight=115.f;
     }
     return self;
 }
@@ -86,10 +86,18 @@
     // Return the number of rows in the section.
     return 100;
 }
-
+/*
+ 
+ Usamos la propiedad rowHeight que nos aconseja Nacho Soto en el grupo 
+ https://groups.google.com/group/iosbootcamp/msg/d793e8e30e4e1382
+ 
+ seteado en el método initWithNibName:bundle:
+ 
+ self.tableView.rowHeight=115.f;
+ 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 91;
-}
+    return 115;
+}*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -101,6 +109,9 @@
         cell = (customCell *)temporaryController.view;
         // Release the temporary UIViewController.
         [temporaryController release];
+        NSLog(@"New Cell");
+    }else{
+        NSLog(@"Reused Cell");
     }
     
     // Configure the cell...
